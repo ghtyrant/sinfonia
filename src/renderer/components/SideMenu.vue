@@ -2,16 +2,20 @@
 <el-aside class="sidebar" width="200px">
   <el-menu default-active="1" class="full_height">
     <el-menu-item index="1" @click="showSoundEditor()">
-      <icon name="music"></icon>
+      <icon name="music" class="icon"></icon>
       <span slot="title">Sound Editor</span>
     </el-menu-item>
     <el-menu-item index="2" @click="showTriggerList()">
-      <icon name="toggle-on"></icon>
+      <icon name="toggle-on" class="icon"></icon>
       <span slot="title">Triggers</span>
     </el-menu-item>
     <el-menu-item index="3" @click="showSettings()">
-      <icon name="cogs"></icon>
+      <icon name="cogs" class="icon"></icon>
       <span slot="title">Settings</span>
+    </el-menu-item>
+    <el-menu-item index="4" @click="showAbout()">
+      <icon name="info" class="icon"></icon>
+      <span slot="title">About</span>
     </el-menu-item>
   </el-menu>
 
@@ -54,6 +58,10 @@
         this.$router.push({ name: 'settings' })
       },
 
+      showAbout () {
+        this.$router.push({ name: 'about' })
+      },
+
       updateVolume (value) {
         this.$api.volume(value)
       }
@@ -82,5 +90,9 @@
     bottom: 0;
     margin-bottom: 20px;
     padding: 20px;
+  }
+
+  .icon {
+    width: 20px;
   }
 </style>

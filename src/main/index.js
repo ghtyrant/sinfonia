@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, shell } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -31,6 +31,13 @@ function createWindow () {
 
   mainWindow.on('closed', () => {
     mainWindow = null
+  })
+
+  mainWindow.webContents.on('new-window', function (e, url) {
+    if (url !== mainWindow.webContents.getURL()) {
+      e.preventDefault()
+      shell.openExternal(url)
+    }
   })
 }
 
